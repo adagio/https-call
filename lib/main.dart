@@ -8,6 +8,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final api = Api();
+
     return MaterialApp(
       title: 'Fetch Data Example',
       theme: ThemeData(
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: FutureBuilder<Post>(
-            future: fetchPost(),
+            future: api.fetchPost(18),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Text(snapshot.data.slug);
